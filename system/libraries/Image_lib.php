@@ -208,11 +208,7 @@ class CI_Image_lib {
 		}
 		else
 		{
-<<<<<<< HEAD
-			if (strpos($this->new_image, '/') === FALSE)
-=======
 			if (strpos($this->new_image, '/') === FALSE AND strpos($this->new_image, '\\') === FALSE)
->>>>>>> ci_stable
 			{
 				$this->dest_folder = $this->source_folder;
 				$this->dest_image = $this->new_image;

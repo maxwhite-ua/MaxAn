@@ -1018,15 +1018,6 @@ class CI_Upload {
 	 */
 	protected function _file_mime_type($file)
 	{
-<<<<<<< HEAD
-		// Use if the Fileinfo extension, if available (only versions above 5.3 support the FILEINFO_MIME_TYPE flag)
-		if ( (float) substr(phpversion(), 0, 3) >= 5.3 && function_exists('finfo_file'))
-		{
-			$finfo = new finfo(FILEINFO_MIME_TYPE);
-			if ($finfo !== FALSE) // This is possible, if there is no magic MIME database file found on the system
-			{
-				$file_type = $finfo->file($file['tmp_name']);
-=======
 		// We'll need this to validate the MIME info string (e.g. text/plain; charset=us-ascii)
 		$regexp = '/^([a-z\-]+\/[a-z0-9\-\.\+]+)(;\s.+)?$/';
 
@@ -1042,49 +1033,19 @@ class CI_Upload {
 			{
 				$mime = @finfo_file($finfo, $file['tmp_name']);
 				finfo_close($finfo);
->>>>>>> ci_stable
 
 				/* According to the comments section of the PHP manual page,
 				 * it is possible that this function returns an empty string
 				 * for some files (e.g. if they don't exist in the magic MIME database)
 				 */
-<<<<<<< HEAD
-				if (strlen($file_type) > 1)
-				{
-					$this->file_type = $file_type;
-=======
 				if (is_string($mime) && preg_match($regexp, $mime, $matches))
 				{
 					$this->file_type = $matches[1];
->>>>>>> ci_stable
 					return;
 				}
 			}
 		}
 
-<<<<<<< HEAD
-		// Fall back to the deprecated mime_content_type(), if available
-		if (function_exists('mime_content_type'))
-		{
-			$this->file_type = @mime_content_type($file['tmp_name']);
-			return;
-		}
-
-		/* This is an ugly hack, but UNIX-type systems provide a native way to detect the file type,
-		 * which is still more secure than depending on the value of $_FILES[$field]['type'].
-		 *
-		 * Notes:
-		 *	- a 'W' in the substr() expression bellow, would mean that we're using Windows
-		 *	- many system admins would disable the exec() function due to security concerns, hence the function_exists() check
-		 */
-		if (DIRECTORY_SEPARATOR !== '\\' && function_exists('exec'))
-		{
-			$output = array();
-			@exec('file --brief --mime-type ' . escapeshellarg($file['tmp_path']), $output, $return_code);
-			if ($return_code === 0 && strlen($output[0]) > 0) // A return status code != 0 would mean failed execution
-			{
-				$this->file_type = rtrim($output[0]);
-=======
 		/* This is an ugly hack, but UNIX-type systems provide a "native" way to detect the file type,
 		 * which is still more secure than depending on the value of $_FILES[$field]['type'], and as it
 		 * was reported in issue #750 (https://github.com/EllisLab/CodeIgniter/issues/750) - it's better
@@ -1155,7 +1116,6 @@ class CI_Upload {
 			$this->file_type = @mime_content_type($file['tmp_name']);
 			if (strlen($this->file_type) > 0) // It's possible that mime_content_type() returns FALSE or an empty string
 			{
->>>>>>> ci_stable
 				return;
 			}
 		}
