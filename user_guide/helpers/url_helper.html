@@ -231,11 +231,19 @@ $url_title = url_title($title);<br />
 </code>
 
 
+<<<<<<< HEAD
 <p>The second parameter determines the word delimiter.  By default dashes are used.  Options are:  <dfn>dash</dfn>, or <dfn>underscore</dfn>:</p>
 
 <code>$title = "What's wrong with CSS?";<br />
 <br />
 $url_title = url_title($title, 'underscore');<br />
+=======
+<p>The second parameter determines the word delimiter.  By default dashes are used.</p>
+
+<code>$title = "What's wrong with CSS?";<br />
+<br />
+$url_title = url_title($title, '_');<br />
+>>>>>>> ci_stable
 <br />
 // Produces:  Whats_wrong_with_CSS
 </code>
@@ -244,7 +252,11 @@ $url_title = url_title($title, 'underscore');<br />
 
 <code>$title = "What's wrong with CSS?";<br />
 <br />
+<<<<<<< HEAD
 $url_title = url_title($title, 'underscore', TRUE);<br />
+=======
+$url_title = url_title($title, '_', TRUE);<br />
+>>>>>>> ci_stable
 <br />
 // Produces:  whats_wrong_with_css
 </code>

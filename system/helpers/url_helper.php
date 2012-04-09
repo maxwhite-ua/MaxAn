@@ -466,16 +466,26 @@ if ( ! function_exists('prep_url'))
  * Create URL Title
  *
  * Takes a "title" string as input and creates a
+<<<<<<< HEAD
  * human-friendly URL string with either a dash
  * or an underscore as the word separator.
  *
  * @access	public
  * @param	string	the string
  * @param	string	the separator: dash, or underscore
+=======
+ * human-friendly URL string with a "separator" string 
+ * as the word separator.
+ *
+ * @access	public
+ * @param	string	the string
+ * @param	string	the separator
+>>>>>>> ci_stable
  * @return	string
  */
 if ( ! function_exists('url_title'))
 {
+<<<<<<< HEAD
 	function url_title($str, $separator = 'dash', $lowercase = FALSE)
 	{
 		if ($separator == 'dash')
@@ -499,6 +509,27 @@ if ( ! function_exists('url_title'))
 						'^'.$replace			=> $replace,
 						'\.+$'					=> ''
 					);
+=======
+	function url_title($str, $separator = '-', $lowercase = FALSE)
+	{
+		if ($separator == 'dash') 
+		{
+		    $separator = '-';
+		}
+		else if ($separator == 'underscore')
+		{
+		    $separator = '_';
+		}
+		
+		$q_separator = preg_quote($separator);
+
+		$trans = array(
+			'&.+?;'                 => '',
+			'[^a-z0-9 _-]'          => '',
+			'\s+'                   => $separator,
+			'('.$q_separator.')+'   => $separator
+		);
+>>>>>>> ci_stable
 
 		$str = strip_tags($str);
 
@@ -512,7 +543,11 @@ if ( ! function_exists('url_title'))
 			$str = strtolower($str);
 		}
 
+<<<<<<< HEAD
 		return trim(stripslashes($str));
+=======
+		return trim($str, $separator);
+>>>>>>> ci_stable
 	}
 }
 

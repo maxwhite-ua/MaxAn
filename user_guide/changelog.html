@@ -28,7 +28,11 @@
 <div id="masthead">
 <table cellpadding="0" cellspacing="0" border="0" style="width:100%">
 <tr>
+<<<<<<< HEAD
 <td><h1>CodeIgniter User Guide Version 2.1.0</h1></td>
+=======
+<td><h1>CodeIgniter User Guide Version 2.1.1</h1></td>
+>>>>>>> ci_stable
 <td id="breadcrumb_right"><a href="./toc.html">Table of Contents Page</a></td>
 </tr>
 </table>
@@ -57,6 +61,40 @@ Change Log
 
 <h1>Change Log</h1>
 
+<<<<<<< HEAD
+=======
+<h2>Version 2.1.1</h2>
+<p>Release Date: not yet released</p>
+
+<ul>
+	<li>General Changes
+		<ul>
+			<li>Fixed support for docx, xlsx files in mimes.php.</li>
+		</ul>
+	</li>
+	<li>Libraries
+		<ul>
+			<li>Further improved MIME type detection in the <a href="libraries/file_uploading.html">File Uploading Library</a>.</li>
+		</ul>
+	</li>
+	<li>Helpers
+		<ul>
+			<li><samp>url_title()</samp> performance and output improved. You can now use any string as the word delimiter. Backwards compatible with 'dash' or 'underscore' as words delimiters.</li>
+		</ul>
+	</li>
+</ul>
+
+<h3>Bug fixes for 2.1.1</h3>
+<ul>
+	<li>Fixed a bug (#697) - A wrong array key was used in the Upload library to check for mime-types.</li>
+	<li>Fixed a bug - form_open() compared $action against site_url() instead of base_url()</li>
+	<li>Fixed a bug - CI_Upload::_file_mime_type() could've failed if mime_content_type() is used for the detection and returns FALSE.</li>
+	<li>Fixed a bug (#538) - Windows paths were ignored when using the <a href="libraries/image_lib.html">Image Manipulation Class</a> to create a new file.</li>
+	<li>Fixed a bug - When database caching was enabled, $this->db->query() checked the cache before binding variables which resulted in cached queries never being found.</li>
+</ul>
+
+
+>>>>>>> ci_stable
 <h2>Version 2.1.0</h2>
 <p>Release Date: November 14, 2011</p>
 
